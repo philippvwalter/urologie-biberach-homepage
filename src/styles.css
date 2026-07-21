@@ -1,0 +1,663 @@
+:root {
+  --bg: #f4f1ea;
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-strong: #fffdf9;
+  --surface-deep: #dfe8e1;
+  --text: #17312e;
+  --muted: #556a66;
+  --line: rgba(23, 49, 46, 0.12);
+  --brand: #1f6a61;
+  --brand-strong: #0d4d47;
+  --brand-soft: #c7ddd7;
+  --accent: #b98055;
+  --shadow: 0 24px 70px rgba(23, 49, 46, 0.12);
+  --radius-lg: 32px;
+  --radius-md: 22px;
+  --radius-sm: 16px;
+  --max-width: 1200px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(185, 128, 85, 0.14), transparent 28%),
+    radial-gradient(circle at top right, rgba(31, 106, 97, 0.16), transparent 24%),
+    linear-gradient(180deg, #efe9df 0%, #f8f5ef 28%, #f2f0ea 100%);
+}
+
+a {
+  color: inherit;
+}
+
+.site-shell {
+  width: min(calc(100% - 32px), var(--max-width));
+  margin: 18px auto 32px;
+}
+
+.site-header {
+  position: sticky;
+  top: 16px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 22px;
+  background: rgba(255, 253, 249, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(18px);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(23, 49, 46, 0.08);
+}
+
+.brand-block {
+  min-width: 0;
+}
+
+.brand {
+  display: inline-block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.8rem, 4vw, 2.3rem);
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.eyebrow,
+.kicker,
+.panel-label,
+.feature-tag,
+.notice-title {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.site-nav a {
+  text-decoration: none;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--brand-strong);
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.hero {
+  padding: 52px 0 18px;
+}
+
+.hero-copy,
+.info-card,
+.service-card,
+.feature-card,
+.location-card,
+.team-card,
+.contact-cta,
+.notice-band article,
+.vasektomie-summary,
+.accordion-list details,
+.panel-card,
+.hero-location {
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.hero-copy {
+  position: relative;
+  display: block;
+  padding: 40px;
+  padding-right: 500px;
+  padding-bottom: 164px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  inset: auto -12% -18% auto;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(31, 106, 97, 0.16), transparent 65%);
+}
+
+.hero-copy h1,
+.section-heading h2,
+.feature-card h3,
+.service-card h3,
+.location-card h3,
+.team-card h3,
+.panel-card h2 {
+  font-family: "Cormorant Garamond", serif;
+}
+
+.hero-copy h1 {
+  margin: 12px 0 16px;
+  max-width: 14ch;
+  font-size: clamp(1.95rem, 3vw, 2.9rem);
+  line-height: 1;
+}
+
+.hero-copy-main {
+  max-width: 860px;
+}
+
+.hero-image-wrap {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  width: min(460px, 40vw);
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  box-shadow: 0 18px 40px rgba(23, 49, 46, 0.16);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.hero-image-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.hero-inline-notice {
+  position: absolute;
+  right: 28px;
+  bottom: 64px;
+  width: min(460px, 40vw);
+  background: linear-gradient(135deg, rgba(13, 77, 71, 0.96), rgba(31, 106, 97, 0.92));
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 14px 34px rgba(13, 77, 71, 0.24);
+  border-radius: 18px;
+  padding: 14px 16px;
+}
+
+.hero-inline-notice .eyebrow {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 6px;
+}
+
+.hero-inline-notice p {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.05vw, 1.04rem);
+  line-height: 1.4;
+}
+
+.lead,
+.two-column-copy p,
+.info-card p,
+.service-card p,
+.feature-card p,
+.location-card p,
+.team-card p,
+.contact-cta p,
+.accordion-list p,
+.accordion-list li,
+.vasektomie-summary p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 24px 0 12px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-strong) 100%);
+  color: white;
+}
+
+.button-secondary {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.hero-footnote {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.hero-footnote {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.hero-locations {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 8px;
+}
+
+.hero-location {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border-radius: var(--radius-md);
+}
+
+.hero-location h2 {
+  margin: 8px 0 14px;
+  font-size: clamp(1.9rem, 2.6vw, 2.4rem);
+  line-height: 1;
+}
+
+.hero-location-primary {
+  background: linear-gradient(180deg, rgba(31, 106, 97, 0.14), rgba(255, 255, 255, 0.84));
+}
+
+.panel-card {
+  padding: 28px;
+  border-radius: var(--radius-md);
+}
+
+.panel-card h2 {
+  margin: 10px 0 18px;
+  font-size: clamp(2rem, 2.8vw, 2.6rem);
+  line-height: 1;
+}
+
+.panel-card-accent {
+  background: linear-gradient(180deg, rgba(13, 77, 71, 0.96), rgba(31, 106, 97, 0.9));
+  color: white;
+}
+
+.panel-card-accent .panel-label,
+.panel-card-accent p,
+.panel-card-accent h2 {
+  color: white;
+}
+
+.time-list {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  display: grid;
+  gap: 12px;
+}
+
+.time-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.time-list li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.compact li {
+  font-size: 0.95rem;
+}
+
+.location-note {
+  margin: auto 0 0;
+  padding-top: 14px;
+  font-size: 0.92rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.notice-band {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.notice-band article,
+.info-card,
+.service-card,
+.feature-card,
+.location-card,
+.team-card,
+.vasektomie-summary,
+.accordion-list details,
+.contact-cta {
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+
+.notice-title {
+  margin-bottom: 10px;
+}
+
+.content-section {
+  padding: 72px 0 0;
+}
+
+.section-heading {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.section-heading.narrow {
+  max-width: 760px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  line-height: 1;
+}
+
+.two-column-copy {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 26px;
+}
+
+.info-grid,
+.services-grid,
+.team-grid,
+.location-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.info-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.services-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.service-card h3,
+.feature-card h3,
+.location-card h3,
+.team-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.9rem;
+}
+
+.feature-stack {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 18px;
+}
+
+.feature-card-wide {
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.92), rgba(223, 232, 225, 0.88));
+}
+
+.vasektomie-layout {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 18px;
+}
+
+.metric-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.metric-panel div {
+  padding: 18px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.metric-panel strong {
+  display: block;
+  font-size: 1.1rem;
+}
+
+.metric-panel span,
+.role {
+  color: var(--muted);
+}
+
+.accordion-list {
+  display: grid;
+  gap: 14px;
+}
+
+.accordion-list details summary,
+.team-card details summary {
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+}
+
+.accordion-list details summary::-webkit-details-marker,
+.team-card details summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-list details summary::after,
+.team-card details summary::after {
+  content: "+";
+  float: right;
+  color: var(--brand);
+}
+
+.accordion-list details[open] summary::after,
+.team-card details[open] summary::after {
+  content: "−";
+}
+
+.accordion-list details > *:not(summary),
+.team-card details > *:not(summary) {
+  margin-top: 14px;
+}
+
+.team-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.team-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 18px;
+  border-radius: 18px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.team-card details {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.location-grid {
+  grid-template-columns: 1.2fr 1fr 1fr;
+}
+
+.location-card-primary {
+  background: linear-gradient(180deg, rgba(31, 106, 97, 0.14), rgba(255, 255, 255, 0.84));
+}
+
+.contact-cta {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 36px 0 12px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 1100px) {
+  .hero-copy {
+    padding-right: 40px;
+    padding-bottom: 34px;
+  }
+
+  .hero-image-wrap {
+    display: none;
+  }
+
+  .hero-inline-notice {
+    position: static;
+    width: auto;
+    margin-top: 14px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero,
+  .hero-locations,
+  .feature-stack,
+  .vasektomie-layout,
+  .location-grid,
+  .services-grid,
+  .team-grid,
+  .info-grid,
+  .notice-band,
+  .two-column-copy {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-cta,
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 780px) {
+  .site-shell {
+    width: min(calc(100% - 20px), var(--max-width));
+  }
+
+  .site-header {
+    border-radius: 28px;
+    padding: 16px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 999px;
+    padding: 10px 16px;
+    font: inherit;
+    color: var(--text);
+  }
+
+  .site-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 8px;
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+
+  .hero {
+    padding-top: 28px;
+  }
+
+  .hero-copy,
+  .panel-card,
+  .notice-band article,
+  .info-card,
+  .service-card,
+  .feature-card,
+  .location-card,
+  .team-card,
+  .contact-cta,
+  .vasektomie-summary,
+  .accordion-list details {
+    padding: 20px;
+  }
+
+  .hero-copy {
+    display: block;
+  }
+
+  .hero-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
+    margin: 20px 0 12px;
+  }
+
+  .hero-copy h1 {
+    max-width: none;
+  }
+
+  .metric-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .time-list li {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
