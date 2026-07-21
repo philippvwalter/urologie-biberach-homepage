@@ -27,12 +27,19 @@
           Menü
         </button>
         <nav id="site-nav" class="site-nav">
-          <a href="#leistungen">Leistungen</a>
+          <a href="#behandlungen">Behandlungen</a>
           <a href="#therapien">Therapien</a>
           <a href="#vasektomie">Vasektomie</a>
           <a href="#team">Team</a>
           <a href="#kontakt">Kontakt</a>
-          <a href="https://webtermin.medatixx.de/#/fdf2cbef-d878-4272-8c6d-11c673be9e88" target="_blank" rel="noreferrer">Termine</a>
+          <div class="dropdown nav-dropdown">
+            <button type="button" class="nav-dropdown-toggle" id="nav-termine-toggle" aria-haspopup="true" aria-expanded="false">Termine</button>
+            <div class="dropdown-menu" id="nav-termine-menu">
+              <a href="https://webtermin.medatixx.de/#/fdf2cbef-d878-4272-8c6d-11c673be9e88/search" target="_blank" rel="noreferrer">Gesetzlich</a>
+              <a href="https://webtermin.medatixx.de/#/dab84c51-1cae-4d58-b50d-e18ea3d935ae/search" target="_blank" rel="noreferrer">Privat</a>
+              <a href="https://webtermin.medatixx.de/#/dab84c51-1cae-4d58-b50d-e18ea3d935ae/search" target="_blank" rel="noreferrer">Vasektomie</a>
+            </div>
+          </div>
         </nav>
       </header>
 
@@ -50,8 +57,16 @@
               <img src="bilder/team.JPG" alt="Ärzteteam der Urologie Biberach" />
             </div>
             <div class="hero-actions">
-              <a class="button button-primary" href="https://webtermin.medatixx.de/#/fdf2cbef-d878-4272-8c6d-11c673be9e88" target="_blank" rel="noreferrer">Termine</a>
+              <div class="dropdown">
+                <button type="button" class="button button-primary" id="termine-toggle" aria-haspopup="true" aria-expanded="false">Online Termine</button>
+                <div class="dropdown-menu" id="termine-menu">
+                  <a href="https://webtermin.medatixx.de/#/fdf2cbef-d878-4272-8c6d-11c673be9e88/search" target="_blank" rel="noreferrer">Gesetzlich</a>
+                  <a href="https://webtermin.medatixx.de/#/dab84c51-1cae-4d58-b50d-e18ea3d935ae/search" target="_blank" rel="noreferrer">Privat</a>
+                  <a href="https://webtermin.medatixx.de/#/dab84c51-1cae-4d58-b50d-e18ea3d935ae/search" target="_blank" rel="noreferrer">Vasektomie</a>
+                </div>
               </div>
+              <button type="button" class="button button-primary" id="anfrage-open">Termin- und Rezeptanfrage</button>
+            </div>
             <p class="hero-footnote">
               Zertifizierter Kooperationspartner des Prostatakarzinomzentrums der urologischen Universitätsklinik Ulm.
             </p>
@@ -62,7 +77,7 @@
           </div>
         </section>
 
-        <section class="hero-locations" aria-label="Standorte im Schnellzugriff">
+        <section class="hero-locations" id="kontakt" aria-label="Standorte im Schnellzugriff">
           <article class="hero-location hero-location-primary">
             <p class="panel-label">Hauptstelle</p>
             <h2>Biberach</h2>
@@ -112,22 +127,11 @@
               Nahezu alle Erkrankungen in diesen Bereichen können in unserer Praxis untersucht und behandelt werden. Dies beinhaltet selbstverständlich auch ambulante Operationen. Einen besonderen Schwerpunkt legen wir auf die Behandlung von Harninkontinenz und Prostataerkrankungen.
             </p>
           </div>
-          <div class="info-grid">
-            <article class="info-card">
-              <h3>Wichtige Hinweise</h3>
-              <p>
-                Termin- und Rezeptanfragen senden Sie aktuell am besten per E-Mail an urologie@aerztehaus-bc.de. Wer sich für eine Ausbildung zur MFA interessiert oder bereits im Gesundheitswesen arbeitet und eine Veränderung sucht, kann die Praxis direkt ansprechen.
-              </p>
-            </article>
-          
-          
-          </div>
         </section>
 
-        <section class="content-section" id="leistungen">
+        <section class="content-section" id="behandlungen">
           <div class="section-heading narrow">
-            <p class="eyebrow">Leistungen</p>
-            <h2>Leistungsüberblick der Praxis</h2>
+            <h2>Behandlungen</h2>
           </div>
           <div class="services-grid">
             <article class="service-card"><h3>Prostataerkrankungen</h3><p>Diagnostik und Behandlung von Prostataerkrankungen.</p></article>
@@ -137,23 +141,16 @@
             <article class="service-card"><h3>Potenz- und Hormonstörungen</h3><p>Diagnostik und Therapie von Potenz- und Hormonstörungen.</p></article>
             <article class="service-card"><h3>Kinderurologie</h3><p>Urologische Betreuung für Kinder und Jugendliche.</p></article>
             <article class="service-card"><h3>Andrologie</h3><p>Männerheilkunde inklusive Fertilität, Sexualmedizin und Beratung.</p></article>
-            <article class="service-card"><h3>Ambulante Operationen</h3><p>Eingriffe im Genitalbereich sowie Sterilisationsoperationen bei abgeschlossener Familienplanung.</p></article>
-            <article class="service-card"><h3>Stationäre Eingriffe</h3><p>Operationen an Prostata, Blase und Harnröhre im Sana Klinikum Biberach.</p></article>
-            <article class="service-card"><h3>Bildgebung & Diagnostik</h3><p>Sonographie, Dopplersonographie, digitale Röntgentechnik, Endoskopie und Labordiagnostik.</p></article>
-            <article class="service-card"><h3>Urodynamik</h3><p>Funktionelle Diagnostik bei Blasenentleerungsstörungen und Inkontinenz.</p></article>
-            <article class="service-card"><h3>Rezept- und Terminservice</h3><p>Anfragen derzeit bevorzugt per E-Mail, ergänzt um Online-Terminoption in Biberach.</p></article>
-          </div>
+            </div>
         </section>
 
         <section class="content-section" id="therapien">
           <div class="section-heading narrow">
-            <p class="eyebrow">Besondere Therapien</p>
             <h2>Ausgewählte Verfahren und Schwerpunkte</h2>
           </div>
           <div class="feature-stack">
             <article class="feature-card feature-card-wide">
               <div>
-                <p class="feature-tag">Neu seit April 2025</p>
                 <h3>ESWT bei erektiler Potenzstörung</h3>
               </div>
               <p>
@@ -166,24 +163,12 @@
                 Bei Interesse an einer Behandlung genügt eine E-Mail an urologie@aerztehaus-bc.de mit dem Betreff „ESWT“.
               </p>
             </article>
-            <article class="feature-card">
-              <h3>Elastographie</h3>
-              <p>
-                Eine spezielle Form des transrektalen Ultraschalls zur verbesserten Darstellung und Erkennung von Krebserkrankungen der Prostata. Verdächtige Bezirke können farblich sichtbar gemacht und gezielt biopsiert werden.
-              </p>
-              <p>
-                Die Untersuchung ist zeitaufwendig, wird nicht in der normalen Sprechstunde durchgeführt und kostet etwa 100 Euro. Die Krankenkassen übernehmen diese Kosten nicht.
-              </p>
-            </article>
-            <article class="feature-card">
-              <h3>Laserablation der Prostata</h3>
-              <p>
-                Stationäre Alternative zur klassischen „Hobelung“ der Prostata in Kooperation mit der urologischen Klinik am Sana Klinikum Biberach. Der Laser trägt Gewebe präzise und blutungsarm schichtweise ab.
-              </p>
-              <p>
-                Dadurch können auch Patienten mit blutverdünnender Medikation wie ASS, Marcumar oder Plavix in vielen Fällen ohne Absetzen der Medikamente operiert werden.
-              </p>
-            </article>
+            
+            <div class="service-card-stack">
+              <article class="service-card service-card-compact"><h3>Ambulante Operationen</h3><p>Eingriffe im Genitalbereich sowie Sterilisationsoperationen bei abgeschlossener Familienplanung.</p></article>
+              <article class="service-card service-card-compact"><h3>Bildgebung & Diagnostik</h3><p>Sonographie, Dopplersonographie, Endoskopie und Labordiagnostik.</p></article>
+              <article class="service-card service-card-compact"><h3>Urodynamik</h3><p>Funktionelle Diagnostik bei Blasenentleerungsstörungen und Inkontinenz.</p></article>
+            </div>
           </div>
         </section>
 
@@ -205,6 +190,7 @@
                 <div><strong>500 bis 600 Euro</strong><span>Selbstzahlerleistung</span></div>
                 <div><strong>ca. 300/Jahr</strong><span>Eingriffe in der Praxis</span></div>
               </div>
+              <a class="button button-primary vasektomie-cta" href="https://webtermin.medatixx.de/#/dab84c51-1cae-4d58-b50d-e18ea3d935ae/search" target="_blank" rel="noreferrer">Termin Sterilisationsplanung</a>
             </div>
             <div class="accordion-list">
               <details open>
@@ -320,7 +306,7 @@
           </div>
         </section>
 
-        <section class="content-section" id="kontakt">
+        <section class="content-section" id="akutsprechstunde">
           <div class="contact-cta">
             <div>
               <p class="eyebrow">Akutsprechstunde</p>
@@ -328,6 +314,37 @@
             </div>
           </div>
         </section>
+
+        <dialog id="anfrage-dialog" class="anfrage-dialog">
+          <form id="anfrage-form" method="dialog">
+            <h3>Anfrage an die Praxis</h3>
+            <label>
+              Anliegen
+              <select name="anliegen" required>
+                <option value="Terminanfrage">Terminanfrage</option>
+                <option value="Rezeptanfrage">Rezeptanfrage</option>
+                <option value="Ausbildung zur MFA">Ausbildung zur MFA</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+            </label>
+            <label>
+              Name
+              <input type="text" name="name" required autocomplete="name" />
+            </label>
+            <label>
+              E-Mail
+              <input type="email" name="email" required autocomplete="email" />
+            </label>
+            <label>
+              Nachricht
+              <textarea name="nachricht" rows="4" required></textarea>
+            </label>
+            <div class="anfrage-actions">
+              <button type="button" class="button button-secondary" id="anfrage-cancel">Abbrechen</button>
+              <button type="submit" class="button button-primary" id="anfrage-send">E-Mail erstellen</button>
+            </div>
+          </form>
+        </dialog>
 
       </main>
 
