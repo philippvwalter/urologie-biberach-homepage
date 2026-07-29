@@ -36,6 +36,14 @@ if (termineToggle && termineMenu) {
       termineToggle.setAttribute('aria-expanded', 'false');
     }
   });
+
+  termineMenu.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      termineMenu.classList.remove('is-open');
+      termineToggle.setAttribute('aria-expanded', 'false');
+      termineToggle.focus();
+    }
+  });
 }
 
 const navTermineToggle = document.querySelector('#nav-termine-toggle');
@@ -52,6 +60,14 @@ if (navTermineToggle && navTermineMenu) {
     if (!navTermineMenu.contains(event.target) && event.target !== navTermineToggle) {
       navTermineMenu.classList.remove('is-open');
       navTermineToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  navTermineMenu.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      navTermineMenu.classList.remove('is-open');
+      navTermineToggle.setAttribute('aria-expanded', 'false');
+      navTermineToggle.focus();
     }
   });
 }
@@ -81,7 +97,7 @@ if (anfrageDialog && anfrageOpen && anfrageCancel && anfrageForm) {
     const subject = `${anliegen} – ${name}`;
     const body = `Anliegen: ${anliegen}\nName: ${name}\nE-Mail: ${email}\n\nNachricht:\n${nachricht}`;
 
-    const mailtoUrl = `mailto:urologie@aerztehaus-bc.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoUrl = `mailto:info@urologie-biberach.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailtoUrl;
 
     anfrageDialog.close();
