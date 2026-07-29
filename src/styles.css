@@ -387,6 +387,56 @@ a {
   margin-top: 8px;
 }
 
+.footer-legal {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.link-button {
+  font: inherit;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.link-button:hover {
+  color: var(--brand);
+}
+
+.legal-dialog {
+  width: min(640px, calc(100% - 40px));
+  max-height: min(80vh, 720px);
+  overflow-y: auto;
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+
+.legal-dialog::backdrop {
+  background: rgba(23, 49, 46, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.legal-dialog h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.9rem;
+  margin: 0 0 20px;
+}
+
+.legal-dialog p,
+.legal-dialog ul {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
 .hero-footnote {
   color: var(--muted);
   line-height: 1.6;

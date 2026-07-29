@@ -88,3 +88,29 @@ if (anfrageDialog && anfrageOpen && anfrageCancel && anfrageForm) {
     anfrageForm.reset();
   });
 }
+
+const impressumDialog = document.querySelector('#impressum-dialog');
+const impressumOpen = document.querySelector('#impressum-open');
+const impressumClose = document.querySelector('#impressum-close');
+
+if (impressumDialog && impressumOpen && impressumClose) {
+  impressumOpen.addEventListener('click', () => {
+    impressumDialog.showModal();
+  });
+  impressumClose.addEventListener('click', () => {
+    impressumDialog.close();
+  });
+}
+
+const datenschutzDialog = document.querySelector('#datenschutz-dialog');
+const datenschutzOpen = document.querySelector('#datenschutz-open');
+const datenschutzClose = document.querySelector('#datenschutz-close');
+
+if (datenschutzDialog && datenschutzOpen && datenschutzClose) {
+  datenschutzOpen.addEventListener('click', () => {
+    datenschutzDialog.showModal();
+  });
+  datenschutzClose.addEventListener('click', () => {
+    datenschutzDialog.close();
+  });
+}
