@@ -342,9 +342,15 @@
               Nachricht
               <textarea name="nachricht" rows="4" required></textarea>
             </label>
+            <label class="sr-only" aria-hidden="true">
+              Bitte freilassen
+              <input type="text" name="website" tabindex="-1" autocomplete="off" />
+            </label>
+            <div class="g-recaptcha" data-sitekey="6Lfs83gtAAAAAOpfdhm6AL5kob9ka_ahcinfqZ_j"></div>
+            <p id="anfrage-status" class="anfrage-status" role="status" aria-live="polite"></p>
             <div class="anfrage-actions">
               <button type="button" class="button button-secondary" id="anfrage-cancel">Abbrechen</button>
-              <button type="submit" class="button button-primary" id="anfrage-send">E-Mail erstellen</button>
+              <button type="submit" class="button button-primary" id="anfrage-send">Anfrage senden</button>
             </div>
           </form>
         </dialog>
@@ -489,7 +495,13 @@
       </p>
       <p>
         <strong>7. Eingebundene Dienste Dritter</strong><br />
-        Aktuell werden auf dieser Website keine externen Dienste Dritter (z. B. Google Fonts, Google Maps, Social-Media-Plugins) eingebunden.
+        Zum Schutz unseres Kontaktformulars vor automatisiertem Missbrauch (Spam-Bots) setzen wir den Dienst „Google reCAPTCHA" der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland ein. reCAPTCHA prüft, ob die Eingabe im Formular durch einen Menschen oder missbräuchlich durch automatisierte Verarbeitung erfolgt. Dabei werden die IP-Adresse und ggf. weitere von Google für den reCAPTCHA-Dienst benötigte Daten an Google übermittelt und dort verarbeitet, unter Umständen auch in die USA. Es kann nicht ausgeschlossen werden, dass Google diese Daten auch zu eigenen Zwecken nutzt.
+      </p>
+      <p>
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Absicherung unseres Kontaktformulars vor Missbrauch und Spam).
+      </p>
+      <p>
+        Weitere Informationen zu Google reCAPTCHA sowie die Datenschutzerklärung von Google finden Sie unter: <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">https://policies.google.com/privacy<span class="sr-only"> (öffnet in neuem Tab)</span></a>
       </p>
       <p><strong>8. Ihre Rechte als betroffene Person</strong></p>
       <p>Ihnen stehen bezüglich Ihrer bei uns gespeicherten personenbezogenen Daten folgende Rechte zu:</p>
@@ -522,6 +534,7 @@
       </div>
     </dialog>
 
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="script.js"></script>
   </body>
 </html>

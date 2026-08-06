@@ -76,9 +76,13 @@ const anfrageDialog = document.querySelector('#anfrage-dialog');
 const anfrageOpen = document.querySelector('#anfrage-open');
 const anfrageCancel = document.querySelector('#anfrage-cancel');
 const anfrageForm = document.querySelector('#anfrage-form');
+const anfrageStatus = document.querySelector('#anfrage-status');
+const anfrageSend = document.querySelector('#anfrage-send');
 
-if (anfrageDialog && anfrageOpen && anfrageCancel && anfrageForm) {
+if (anfrageDialog && anfrageOpen && anfrageCancel && anfrageForm && anfrageStatus && anfrageSend) {
   anfrageOpen.addEventListener('click', () => {
+    anfrageStatus.textContent = '';
+    anfrageStatus.classList.remove('is-error', 'is-success');
     anfrageDialog.showModal();
   });
 
@@ -86,22 +90,40 @@ if (anfrageDialog && anfrageOpen && anfrageCancel && anfrageForm) {
     anfrageDialog.close();
   });
 
-  anfrageForm.addEventListener('submit', (event) => {
+  anfrageForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const data = new FormData(anfrageForm);
-    const anliegen = data.get('anliegen');
-    const name = data.get('name');
-    const email = data.get('email');
-    const nachricht = data.get('nachricht');
+    anfrageStatus.textContent = 'Wird gesendet …';
+    anfrageStatus.classList.remove('is-error', 'is-success');
+    anfrageSend.disabled = true;
 
-    const subject = `${anliegen} – ${name}`;
-    const body = `Anliegen: ${anliegen}\nName: ${name}\nE-Mail: ${email}\n\nNachricht:\n${nachricht}`;
+    try {
+      const response = await fetch('send-anfrage.php', {
+        method: 'POST',
+        body: new FormData(anfrageForm),
+      });
+      const result = await response.json();
 
-    const mailtoUrl = `mailto:info@urologie-biberach.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoUrl;
+      anfrageStatus.textContent = result.message;
 
-    anfrageDialog.close();
-    anfrageForm.reset();
+      if (result.success) {
+        anfrageStatus.classList.add('is-success');
+        anfrageForm.reset();
+        if (window.grecaptcha) window.grecaptcha.reset();
+        setTimeout(() => {
+          anfrageDialog.close();
+          anfrageStatus.textContent = '';
+        }, 2000);
+      } else {
+        anfrageStatus.classList.add('is-error');
+        if (window.grecaptcha) window.grecaptcha.reset();
+      }
+    } catch (error) {
+      anfrageStatus.textContent = 'Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.';
+      anfrageStatus.classList.add('is-error');
+      if (window.grecaptcha) window.grecaptcha.reset();
+    } finally {
+      anfrageSend.disabled = false;
+    }
   });
 }
 

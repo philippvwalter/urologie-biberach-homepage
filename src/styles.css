@@ -429,6 +429,21 @@ a {
   resize: vertical;
 }
 
+.anfrage-status {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-height: 1.2em;
+}
+
+.anfrage-status.is-success {
+  color: var(--brand-strong);
+}
+
+.anfrage-status.is-error {
+  color: #b3402c;
+}
+
 .anfrage-actions {
   display: flex;
   justify-content: flex-end;
