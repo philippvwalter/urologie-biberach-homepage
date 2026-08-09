@@ -73,21 +73,68 @@ if (navTermineToggle && navTermineMenu) {
 }
 
 const anfrageDialog = document.querySelector('#anfrage-dialog');
+const anfrageBackdrop = document.querySelector('#anfrage-backdrop');
 const anfrageOpen = document.querySelector('#anfrage-open');
 const anfrageCancel = document.querySelector('#anfrage-cancel');
 const anfrageForm = document.querySelector('#anfrage-form');
 const anfrageStatus = document.querySelector('#anfrage-status');
 const anfrageSend = document.querySelector('#anfrage-send');
+const siteShell = document.querySelector('.site-shell');
 
-if (anfrageDialog && anfrageOpen && anfrageCancel && anfrageForm && anfrageStatus && anfrageSend) {
-  anfrageOpen.addEventListener('click', () => {
+if (anfrageDialog && anfrageBackdrop && anfrageOpen && anfrageCancel && anfrageForm && anfrageStatus && anfrageSend) {
+  let anfrageTrigger = null;
+  let recaptchaLoading = null;
+
+  // reCAPTCHA wird erst geladen, wenn der Besucher das Kontaktformular
+  // tatsächlich öffnet – nicht auf jeder Seitenansicht (Datenschutz).
+  function loadRecaptcha() {
+    if (!recaptchaLoading) {
+      recaptchaLoading = new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = 'https://www.google.com/recaptcha/api.js';
+        script.async = true;
+        script.defer = true;
+        script.onload = resolve;
+        document.body.appendChild(script);
+      });
+    }
+    return recaptchaLoading;
+  }
+
+  const openAnfrageDialog = () => {
     anfrageStatus.textContent = '';
     anfrageStatus.classList.remove('is-error', 'is-success');
-    anfrageDialog.showModal();
-  });
+    anfrageTrigger = document.activeElement;
+    loadRecaptcha();
+    // show() statt showModal(): showModal() würde den Dialog in den
+    // Browser-Top-Layer heben, der über dem Google-reCAPTCHA-Popup
+    // liegt und es dadurch verdeckt/unerreichbar macht. inert ersetzt
+    // den dadurch verlorenen nativen Fokus-Trap auf den Rest der Seite.
+    anfrageDialog.show();
+    anfrageBackdrop.classList.add('is-open');
+    if (siteShell) siteShell.inert = true;
+    const firstField = anfrageForm.querySelector('select, input, textarea');
+    if (firstField) firstField.focus();
+  };
 
-  anfrageCancel.addEventListener('click', () => {
+  const closeAnfrageDialog = () => {
     anfrageDialog.close();
+    anfrageBackdrop.classList.remove('is-open');
+    if (siteShell) siteShell.inert = false;
+    if (anfrageTrigger) anfrageTrigger.focus();
+  };
+
+  anfrageOpen.addEventListener('click', openAnfrageDialog);
+
+  anfrageCancel.addEventListener('click', closeAnfrageDialog);
+
+  anfrageBackdrop.addEventListener('click', closeAnfrageDialog);
+
+  anfrageDialog.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeAnfrageDialog();
+    }
   });
 
   anfrageForm.addEventListener('submit', async (event) => {
@@ -110,7 +157,7 @@ if (anfrageDialog && anfrageOpen && anfrageCancel && anfrageForm && anfrageStatu
         anfrageForm.reset();
         if (window.grecaptcha) window.grecaptcha.reset();
         setTimeout(() => {
-          anfrageDialog.close();
+          closeAnfrageDialog();
           anfrageStatus.textContent = '';
         }, 2000);
       } else {

@@ -8,12 +8,6 @@
       name="description"
       content="Moderne Urologie in Biberach mit Leistungen von Vorsorge bis Vasektomie, mehreren Standorten und Online-Terminoption."
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -318,43 +312,6 @@
           </div>
         </section>
 
-        <dialog id="anfrage-dialog" class="anfrage-dialog" aria-labelledby="anfrage-dialog-title">
-          <form id="anfrage-form" method="dialog">
-            <h3 id="anfrage-dialog-title">Anfrage an die Praxis</h3>
-            <label>
-              Anliegen
-              <select name="anliegen" required>
-                <option value="Terminanfrage">Terminanfrage</option>
-                <option value="Rezeptanfrage">Rezeptanfrage</option>
-                <option value="Bewerbung">Bewerbung</option>
-                <option value="Sonstiges">Sonstiges</option>
-              </select>
-            </label>
-            <label>
-              Name
-              <input type="text" name="name" required autocomplete="name" />
-            </label>
-            <label>
-              E-Mail
-              <input type="email" name="email" required autocomplete="email" />
-            </label>
-            <label>
-              Nachricht
-              <textarea name="nachricht" rows="4" required></textarea>
-            </label>
-            <label class="sr-only" aria-hidden="true">
-              Bitte freilassen
-              <input type="text" name="website" tabindex="-1" autocomplete="off" />
-            </label>
-            <div class="g-recaptcha" data-sitekey="6Lfs83gtAAAAAOpfdhm6AL5kob9ka_ahcinfqZ_j"></div>
-            <p id="anfrage-status" class="anfrage-status" role="status" aria-live="polite"></p>
-            <div class="anfrage-actions">
-              <button type="button" class="button button-secondary" id="anfrage-cancel">Abbrechen</button>
-              <button type="submit" class="button button-primary" id="anfrage-send">Anfrage senden</button>
-            </div>
-          </form>
-        </dialog>
-
       </main>
 
       <footer class="site-footer">
@@ -367,6 +324,44 @@
         </p>
       </footer>
     </div>
+
+    <div id="anfrage-backdrop" class="anfrage-backdrop"></div>
+    <dialog id="anfrage-dialog" class="anfrage-dialog" aria-labelledby="anfrage-dialog-title" aria-modal="true" role="dialog">
+      <form id="anfrage-form" method="dialog">
+        <h3 id="anfrage-dialog-title">Anfrage an die Praxis</h3>
+        <label>
+          Anliegen
+          <select name="anliegen" required>
+            <option value="Terminanfrage">Terminanfrage</option>
+            <option value="Rezeptanfrage">Rezeptanfrage</option>
+            <option value="Bewerbung">Bewerbung</option>
+            <option value="Sonstiges">Sonstiges</option>
+          </select>
+        </label>
+        <label>
+          Name
+          <input type="text" name="name" required autocomplete="name" />
+        </label>
+        <label>
+          E-Mail
+          <input type="email" name="email" required autocomplete="email" />
+        </label>
+        <label>
+          Nachricht
+          <textarea name="nachricht" rows="4" required></textarea>
+        </label>
+        <label class="sr-only" aria-hidden="true">
+          Bitte freilassen
+          <input type="text" name="website" tabindex="-1" autocomplete="off" />
+        </label>
+        <div class="g-recaptcha" data-sitekey="6Lfs83gtAAAAAOpfdhm6AL5kob9ka_ahcinfqZ_j"></div>
+        <p id="anfrage-status" class="anfrage-status" role="status" aria-live="polite"></p>
+        <div class="anfrage-actions">
+          <button type="button" class="button button-secondary" id="anfrage-cancel">Abbrechen</button>
+          <button type="submit" class="button button-primary" id="anfrage-send">Anfrage senden</button>
+        </div>
+      </form>
+    </dialog>
 
     <dialog id="impressum-dialog" class="legal-dialog" aria-labelledby="impressum-dialog-title">
       <h3 id="impressum-dialog-title">Impressum</h3>
@@ -481,7 +476,7 @@
       <p>Speicherdauer: Die Logfile-Daten werden aus Sicherheitsgründen (z. B. zur Aufklärung von Missbrauchsfällen) für einen begrenzten Zeitraum gespeichert und danach gelöscht. Näheres zur genauen Speicherdauer bei IONOS: https://www.ionos.de/terms-gtc/datenschutzerklaerung/</p>
       <p>Zwischen uns und IONOS besteht ein Vertrag zur Auftragsverarbeitung gemäß Art. 28 DSGVO.</p>
       <p><strong>5. Kontaktformular</strong></p>
-      <p>Wenn Sie uns über das auf der Website bereitgestellte Kontaktformular (z. B. für Terminanfragen) Nachrichten zukommen lassen, werden die von Ihnen angegebenen Daten (z. B. Name, E-Mail-Adresse, Telefonnummer, Nachrichtentext) zur Bearbeitung Ihrer Anfrage sowie für den Fall von Anschlussfragen bei uns gespeichert.</p>
+      <p>Wenn Sie uns über das auf der Website bereitgestellte Kontaktformular (z. B. für Terminanfragen) Nachrichten zukommen lassen, werden die von Ihnen angegebenen Daten (Anliegen, Name, E-Mail-Adresse, Nachrichtentext) zur Bearbeitung Ihrer Anfrage sowie für den Fall von Anschlussfragen bei uns gespeichert.</p>
       <p>Bitte beachten Sie: Über das Kontaktformular übermittelte Angaben können Rückschlüsse auf gesundheitliche Anliegen zulassen und damit unter die besonderen Kategorien personenbezogener Daten (Gesundheitsdaten, Art. 9 DSGVO) fallen. Wir bitten Sie, im Formular möglichst keine detaillierten medizinischen Angaben zu machen, sondern lediglich einen Rückrufwunsch bzw. eine allgemeine Terminanfrage zu übermitteln. Ausführliche medizinische Angaben können dann im persönlichen bzw. telefonischen Kontakt besprochen werden.</p>
       <p>Rechtsgrundlage:</p>
       <ul>
@@ -491,17 +486,20 @@
       <p>Speicherdauer: Reine Terminanfragen oder allgemeine Anfragen ohne Behandlungsbezug werden gelöscht, sobald sie bearbeitet sind, spätestens jedoch nach 6 Monaten. Sofern die Korrespondenz Bestandteil einer ärztlichen Behandlung wird (z. B. bei medizinischen Rückfragen im Rahmen einer laufenden Behandlung), gilt die gesetzliche Aufbewahrungsfrist von mindestens 10 Jahren nach Abschluss der Behandlung gemäß § 630f BGB.</p>
       <p>
         <strong>6. Cookies und Tracking</strong><br />
-        Diese Website setzt derzeit ausschließlich technisch notwendige Cookies ein, die für den Betrieb der Website erforderlich sind. Eine Analyse des Nutzerverhaltens (Tracking) findet aktuell nicht statt.
+        Diese Website setzt technisch notwendige Cookies ein, die für den Betrieb der Website erforderlich sind. Eine Analyse des Nutzerverhaltens (Tracking) zu Werbe- oder Statistikzwecken findet nicht statt. Eine Ausnahme bildet der unter Ziffer 7 beschriebene Dienst Google reCAPTCHA, der zum Schutz vor Spam-Bots eigene Cookies setzen kann.
       </p>
       <p>
-        <strong>7. Eingebundene Dienste Dritter</strong><br />
-        Zum Schutz unseres Kontaktformulars vor automatisiertem Missbrauch (Spam-Bots) setzen wir den Dienst „Google reCAPTCHA" der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland ein. reCAPTCHA prüft, ob die Eingabe im Formular durch einen Menschen oder missbräuchlich durch automatisierte Verarbeitung erfolgt. Dabei werden die IP-Adresse und ggf. weitere von Google für den reCAPTCHA-Dienst benötigte Daten an Google übermittelt und dort verarbeitet, unter Umständen auch in die USA. Es kann nicht ausgeschlossen werden, dass Google diese Daten auch zu eigenen Zwecken nutzt.
+        <strong>7. Eingebundene Dienste Dritter – Google reCAPTCHA</strong><br />
+        Zum Schutz unseres Kontaktformulars vor automatisiertem Missbrauch (Spam-Bots) setzen wir den Dienst „Google reCAPTCHA" der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (im Konzernverbund mit der Google LLC, USA) ein. reCAPTCHA prüft, ob die Eingabe im Formular durch einen Menschen oder missbräuchlich durch automatisierte Verarbeitung erfolgt.
       </p>
       <p>
-        Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Absicherung unseres Kontaktformulars vor Missbrauch und Spam).
+        Dabei werden die IP-Adresse, Mausbewegungen, Browser- und Geräteinformationen sowie ggf. weitere von Google für den Dienst benötigte Daten erhoben und an Google-Server übermittelt und dort verarbeitet, auch in die USA. Für diese Datenübermittlung in ein Drittland hat Google nach eigenen Angaben EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO) als geeignete Garantien abgeschlossen. Es kann nicht ausgeschlossen werden, dass Google diese Daten auch zu eigenen Zwecken nutzt. Wir haben keinen Einfluss auf den Umfang der von Google tatsächlich erhobenen und gespeicherten Daten.
       </p>
       <p>
-        Weitere Informationen zu Google reCAPTCHA sowie die Datenschutzerklärung von Google finden Sie unter: <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">https://policies.google.com/privacy<span class="sr-only"> (öffnet in neuem Tab)</span></a>
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Absicherung unseres Kontaktformulars vor Missbrauch, Spam und automatisierten Angriffen). Google reCAPTCHA wird ausschließlich beim Aufruf des Kontaktformulars geladen, nicht auf den übrigen Seiten der Website.
+      </p>
+      <p>
+        Weitere Informationen zu Google reCAPTCHA sowie die Datenschutzerklärung von Google finden Sie unter: <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">https://policies.google.com/privacy<span class="sr-only"> (öffnet in neuem Tab)</span></a>. Informationen zu den Standardvertragsklauseln von Google: <a href="https://business.safety.google/adsprocessorterms/" target="_blank" rel="noreferrer">https://business.safety.google/adsprocessorterms/<span class="sr-only"> (öffnet in neuem Tab)</span></a>
       </p>
       <p><strong>8. Ihre Rechte als betroffene Person</strong></p>
       <p>Ihnen stehen bezüglich Ihrer bei uns gespeicherten personenbezogenen Daten folgende Rechte zu:</p>
@@ -534,7 +532,6 @@
       </div>
     </dialog>
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="script.js"></script>
   </body>
 </html>

@@ -1,3 +1,41 @@
+/* Selbst gehostete Schriften statt Google Fonts CDN (Datenschutz: keine
+   IP-Übertragung an Google bei jedem Seitenaufruf). */
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("fonts/manrope-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("fonts/manrope-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url("fonts/cormorant-garamond-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url("fonts/cormorant-garamond-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 :root {
   --bg: #f4f1ea;
   --surface: rgba(255, 255, 255, 0.78);
@@ -381,6 +419,8 @@ a {
 
 .anfrage-dialog {
   width: min(480px, calc(100% - 40px));
+  max-height: min(90vh, 720px);
+  overflow-y: auto;
   border: none;
   border-radius: var(--radius-lg);
   padding: 32px;
@@ -389,9 +429,29 @@ a {
   color: var(--text);
 }
 
-.anfrage-dialog::backdrop {
+/* Manuelles Modal statt showModal(): der native Top Layer würde sonst
+   über dem Google-reCAPTCHA-Popup liegen (das an <body> angehängt wird)
+   und es dadurch unerreichbar/verdeckt machen. */
+.anfrage-dialog[open] {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  z-index: 50;
+}
+
+.anfrage-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
   background: rgba(23, 49, 46, 0.45);
   backdrop-filter: blur(2px);
+  z-index: 40;
+}
+
+.anfrage-backdrop.is-open {
+  display: block;
 }
 
 .anfrage-dialog h3 {
