@@ -14,3 +14,11 @@
 <FilesMatch "^(\.env.*|config(\.example)?\.php)$">
   Require all denied
 </FilesMatch>
+
+# Browser sollen HTML-, CSS- und JS-Dateien bei jedem Besuch auf Aktualität
+# prüfen, damit Änderungen (z. B. am Anfrageformular) sofort ankommen.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|css|js)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
