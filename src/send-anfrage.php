@@ -3,7 +3,8 @@ declare(strict_types=1);
 
 header('Content-Type: application/json; charset=utf-8');
 
-const RECAPTCHA_SECRET_KEY = '6Lfs83gtAAAAAOj7Bi9obVb-Afs2kQIRuuQCr-IN';
+$config = require __DIR__ . '/config.php';
+define('RECAPTCHA_SECRET_KEY', $config['recaptcha_secret_key']);
 
 $empfaenger = 'info@urologie-biberach.de';
 $absenderDomain = 'urologie-biberach.de';
