@@ -67,6 +67,17 @@ if ($anliegen === '' || !in_array($anliegen, $erlaubteAnliegen, true)) {
 if ($name === '' || mb_strlen($name) > 200) {
     respond(false, 'Bitte geben Sie einen gültigen Namen an.');
 }
+$geburtsdatum = '';
+if (in_array($anliegen, ['Terminanfrage', 'Rezeptanfrage'], true)) {
+    $geburtsdatumEingabe = trim((string) ($_POST['geburtsdatum'] ?? ''));
+    if (!preg_match('/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/', $geburtsdatumEingabe, $teile)
+        || !checkdate((int) $teile[2], (int) $teile[1], (int) $teile[3])
+        || (int) $teile[3] < 1900
+        || sprintf('%04d-%02d-%02d', $teile[3], $teile[2], $teile[1]) > date('Y-m-d')) {
+        respond(false, 'Bitte geben Sie ein gültiges Geburtsdatum im Format TT.MM.JJJJ an.');
+    }
+    $geburtsdatum = sprintf('%02d.%02d.%04d', $teile[1], $teile[2], $teile[3]);
+}
 if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL) || mb_strlen($email) > 200) {
     respond(false, 'Bitte geben Sie eine gültige E-Mail-Adresse an.');
 }
@@ -93,6 +104,9 @@ $betreff = "Praxisanfrage: {$anliegen} – {$name}";
 $body = "Neue Anfrage über die Website:\n\n";
 $body .= "Anliegen: {$anliegen}\n";
 $body .= "Name: {$name}\n";
+if ($geburtsdatum !== '') {
+    $body .= "Geburtsdatum: {$geburtsdatum}\n";
+}
 $body .= "E-Mail: {$email}\n\n";
 $body .= "Nachricht:\n{$nachricht}\n";
 

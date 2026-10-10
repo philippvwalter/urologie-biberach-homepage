@@ -85,6 +85,22 @@ if (anfrageDialog && anfrageBackdrop && anfrageOpen && anfrageCancel && anfrageF
   let anfrageTrigger = null;
   let recaptchaLoading = null;
 
+  // Geburtsdatum nur bei Termin- und Rezeptanfragen abfragen (dann Pflicht).
+  // disabled nimmt das Feld aus Pflichtprüfung und Formulardaten heraus.
+  const anliegenSelect = anfrageForm.querySelector('select[name="anliegen"]');
+  const geburtsdatumFeld = document.querySelector('#geburtsdatum-feld');
+  const geburtsdatumInput = anfrageForm.querySelector('input[name="geburtsdatum"]');
+
+  const updateGeburtsdatumFeld = () => {
+    if (!anliegenSelect || !geburtsdatumFeld || !geburtsdatumInput) return;
+    const benoetigt = ['Terminanfrage', 'Rezeptanfrage'].includes(anliegenSelect.value);
+    geburtsdatumFeld.hidden = !benoetigt;
+    geburtsdatumInput.disabled = !benoetigt;
+  };
+
+  if (anliegenSelect) anliegenSelect.addEventListener('change', updateGeburtsdatumFeld);
+  updateGeburtsdatumFeld();
+
   // reCAPTCHA wird erst geladen, wenn der Besucher das Kontaktformular
   // tatsächlich öffnet – nicht auf jeder Seitenansicht (Datenschutz).
   function loadRecaptcha() {
@@ -155,6 +171,7 @@ if (anfrageDialog && anfrageBackdrop && anfrageOpen && anfrageCancel && anfrageF
       if (result.success) {
         anfrageStatus.classList.add('is-success');
         anfrageForm.reset();
+        updateGeburtsdatumFeld();
         if (window.grecaptcha) window.grecaptcha.reset();
         setTimeout(() => {
           closeAnfrageDialog();

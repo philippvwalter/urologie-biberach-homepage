@@ -473,6 +473,10 @@ a {
   color: var(--text);
 }
 
+.anfrage-dialog label[hidden] {
+  display: none;
+}
+
 .anfrage-dialog input,
 .anfrage-dialog select,
 .anfrage-dialog textarea {
